@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {SentenceContext} from './../../contexts/sentence.context';
 import { ListItem } from './word.styles';
 
 export const Word = () => {
+  const {addWord} = useContext(SentenceContext);
   return (
-    <ListItem>Orange</ListItem>
+    <ListItem onClick={addWord}>Orange</ListItem>
   )
 }

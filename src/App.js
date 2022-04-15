@@ -1,3 +1,4 @@
+import React from 'react';
 import {Header} from './components/Header/header.component';
 import {ButtonGroup} from './components/ButtonGroup/buttonGroup.component';
 import {Sentence} from './components/Sentence/sentence.component';
