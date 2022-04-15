@@ -1,11 +1,16 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {CustomButton} from './../Button/button.component';
+import {SentenceContext} from './../../contexts/sentence.context';
 import { ButtonContainer } from './buttonGroup.styles';
 
-export const ButtonGroup = () => (
-    <ButtonContainer>
-        <CustomButton inverted>Clear</CustomButton>
-        <CustomButton>Save</CustomButton>
-    </ButtonContainer>
-  );
+export const ButtonGroup = () => {
+    const {clearSentence, saveSentence} = useContext(SentenceContext);
+    
+    return (
+        <ButtonContainer>
+            <CustomButton inverted handleClick={clearSentence}>Clear</CustomButton>
+            <CustomButton handleClick={saveSentence}>Save</CustomButton>
+        </ButtonContainer>
+  )
+};
 

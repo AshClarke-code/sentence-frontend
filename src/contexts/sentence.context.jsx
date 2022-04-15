@@ -28,18 +28,21 @@ export const SentenceProvider = ({children}) => {
         setCurrentSentence(() => {
             return currentSentence.length > 0 ? `${currentSentence} ${event.target.innerText}` : `${event.target.innerText}`;
         });
-        console.log(currentSentence);
     }
 
     const saveSentence = async () => {
         try{
-            const response = await fetch('url', {method: 'POST'});
+            const requestOptions = {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({sentence: currentSentence}),
+            }
+            const response = await fetch(`http://localhost:8000/api/v1/sentences`, requestOptions);
             if(!response.ok){
                 const error = response.json();
                 console.log(error.message);
                 return;
             }
-            // const data = await response.json();
             setCurrentSentence("");
 
 

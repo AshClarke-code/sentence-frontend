@@ -17,7 +17,11 @@ html {
 
 
 body {
+  width: 100vw;
+  overflow-x: hidden;
+  background-color: #282c34;
   box-sizing: border-box;
+  padding-bottom: 2rem;
   font-size: 1.6rem;
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;

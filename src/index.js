@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/';
+import {BrowserRouter} from "react-router-dom";
 import './index.css';
 import App from './App';
 import {SentenceProvider} from './contexts/sentence.context';
@@ -7,9 +8,11 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
+    <BrowserRouter>
     <SentenceProvider>
       <App />
     </SentenceProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

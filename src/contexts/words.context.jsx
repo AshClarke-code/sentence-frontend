@@ -6,7 +6,7 @@ const nullFunction = () => null;
 
 export const WordContext = createContext({
     currentWords: [],
-    currentPage: 0,
+    currentPage: 1,
     wordType: "",
     decreasePage: nullFunction,
     increasePage: nullFunction,
@@ -15,7 +15,7 @@ export const WordContext = createContext({
 
 
 export const WordProvider = ({children}) => {
-    const [currentWords, setCurrentWords] = useState([]);
+    const [currentWords, setCurrentWords] = useState("");
     const [currentPage, setCurrentPage] = useState(0);
     const [wordType, setWordType] = useState("");
 
@@ -24,7 +24,7 @@ export const WordProvider = ({children}) => {
 
     const getWords = async (wordType, page) => {
         try{
-            const response = await fetch('url', {});
+            const response = await fetch(`http://localhost:8000/api/v1/words?type=${wordType}&page=${page}`);
             if(!response.ok){
                 const error = response.json();
                 console.log(error.message);

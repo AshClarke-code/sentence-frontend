@@ -41,4 +41,11 @@ export const Button = styled.button`
         border 2px solid ${colors.colorAccent};
         transform: translateY(-3px);
     }
+
+    &:active {
+        color: ${colors.colorWhite};
+        background-color: ${colors.colorBlack};
+        border 2px solid ${colors.colorAccent};
+        transform: translateY(3px);
+    }
 `;
