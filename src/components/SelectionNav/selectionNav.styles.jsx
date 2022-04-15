@@ -3,15 +3,6 @@ import {Link} from "react-router-dom";
 import {colors} from './../../utils/variables';
 
 
-export const SelectionContainer = styled.div`
-    height: 45vh;
-    width: 95%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4rem;
-`;
-
 export const Nav = styled.nav`
     width: 100%;
     display: flex;
@@ -42,4 +33,5 @@ export const Button = styled.button`
     border: none;
     color: ${colors.colorAccent};
     background-color: transparent;
+    cursor: pointer;
 `;

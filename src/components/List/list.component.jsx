@@ -5,12 +5,16 @@ import {WordContext} from './../../contexts/words.context';
 import { ListContainer } from './list.styles';
 
 export const List = () => {
-  const {currentWords, getWords, currentPage} = useContext(WordContext);
+  const {currentWords, getWords, currentPage, resetPageCount} = useContext(WordContext);
   const {type} = useParams();
 
   useEffect(() => {
       getWords(type, currentPage);
   }, [currentPage, type]);
+
+  useEffect(() => {
+    resetPageCount();
+  }, [type])
   return (
     <ListContainer>
         {

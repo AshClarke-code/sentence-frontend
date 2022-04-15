@@ -11,16 +11,18 @@ export const WordContext = createContext({
     decreasePage: nullFunction,
     increasePage: nullFunction,
     getWords: nullFunction,
+    resetPageCount: nullFunction
 });
 
 
 export const WordProvider = ({children}) => {
     const [currentWords, setCurrentWords] = useState("");
-    const [currentPage, setCurrentPage] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
     const [wordType, setWordType] = useState("");
 
-    const decreasePage = () => currentPage === 0 ? setCurrentPage(currentPage) : setCurrentPage(currentPage - 1);
+    const decreasePage = () => currentPage === 1 ? setCurrentPage(currentPage) : setCurrentPage(currentPage - 1);
     const increasePage = () => setCurrentPage(currentPage + 1);
+    const resetPageCount = () => setCurrentPage(1);
 
     const getWords = async (wordType, page) => {
         try{
@@ -46,7 +48,8 @@ export const WordProvider = ({children}) => {
         wordType,
         decreasePage,
         increasePage,
-        getWords
+        getWords,
+        resetPageCount
     };
 
     return (<WordContext.Provider value={values}>{children}</WordContext.Provider>)

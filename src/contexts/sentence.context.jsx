@@ -26,7 +26,12 @@ export const SentenceProvider = ({children}) => {
     // for li
     const addWord = event => {
         setCurrentSentence(() => {
-            return currentSentence.length > 0 ? `${currentSentence} ${event.target.innerText}` : `${event.target.innerText}`;
+            let word = event.target.innerText;
+            if(currentSentence.length > 0) return `${currentSentence} ${word}`;
+            //capitalize first letter in sentence
+            let letter = word[0].toUpperCase();
+            word = `${letter}${word.slice(1)}`;
+            return word;  
         });
     }
 
