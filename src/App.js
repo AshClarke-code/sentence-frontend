@@ -1,8 +1,9 @@
 import React from 'react';
+import {Switch, Route, Redirect} from 'react-router';
 import {Header} from './components/Header/header.component';
-import {ButtonGroup} from './components/ButtonGroup/buttonGroup.component';
-import {Sentence} from './components/Sentence/sentence.component';
-import {Selection} from './components/Selection/selection.component';
+import {HomePage} from './pages/Home/home.component';
+import {SentenceListPage} from './pages/SentenceList/sentenceList.component';
+
 import './App.scss';
 
 
@@ -10,9 +11,11 @@ function App() {
   return (
     <div className="App">
       <Header/>
-      <Sentence/>
-      <ButtonGroup/>
-      <Selection/>
+      <Switch>
+        <Route exact path="/" render={() => <Redirect to="/words"/>}/>
+        <Route path="/words" component={HomePage}/>
+        <Route exact path="/sentences" component={SentenceListPage}/>
+      </Switch>
     </div>
   );
 }

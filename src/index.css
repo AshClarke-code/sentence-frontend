@@ -14,6 +14,18 @@ html {
 
 }
 
+@media only screen and (max-width: 600px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  html {
+    font-size: 43.75%;
+  }
+}
+
 
 
 body {
@@ -26,4 +38,8 @@ body {
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar {
+  width: 0;
 }

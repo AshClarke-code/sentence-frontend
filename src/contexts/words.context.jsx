@@ -1,4 +1,5 @@
 import {createContext, useState} from 'react';
+import usePageCount from './../hooks/usePageCount';
 
 
 const nullFunction = () => null;
@@ -17,16 +18,13 @@ export const WordContext = createContext({
 
 export const WordProvider = ({children}) => {
     const [currentWords, setCurrentWords] = useState("");
-    const [currentPage, setCurrentPage] = useState(1);
     const [wordType, setWordType] = useState("");
+    const {currentPage, decreasePage, increasePage, resetPageCount} = usePageCount();
 
-    const decreasePage = () => currentPage === 1 ? setCurrentPage(currentPage) : setCurrentPage(currentPage - 1);
-    const increasePage = () => setCurrentPage(currentPage + 1);
-    const resetPageCount = () => setCurrentPage(1);
 
     const getWords = async (wordType, page) => {
         try{
-            const response = await fetch(`http://localhost:8000/api/v1/words?type=${wordType}&page=${page}`);
+            const response = await fetch(`http://localhost:8000/api/v1/words?type=${wordType}&page=${page}&sort=word&fields=word`);
             if(!response.ok){
                 const error = response.json();
                 console.log(error.message);
