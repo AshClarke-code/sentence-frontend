@@ -14,6 +14,9 @@ export const NavItem = styled.a`
     text-decoration: none;
     color: ${colors.colorWhite};
     cursor: pointer;
+    outline: none;
+    border: none;
+    background-color: transparent;
 
     &:hover {
         border-bottom: 1px solid ${colors.colorAccent};

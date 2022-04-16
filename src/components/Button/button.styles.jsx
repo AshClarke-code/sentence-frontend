@@ -23,7 +23,7 @@ export const Button = styled.button`
     cursor: pointer;
     text-transform: uppercase;
     border: none;
-    font-weight: 600;
+    font-weight: 100;
     width: 15rem;
     height: 4rem;
     border-radius: 100px;
@@ -38,14 +38,14 @@ export const Button = styled.button`
     &:hover {
         color: ${colors.colorWhite};
         background-color: ${colors.colorBlack};
-        border 2px solid ${colors.colorAccent};
+        border: 2px solid ${colors.colorAccent};
         transform: translateY(-3px);
     }
 
     &:active {
         color: ${colors.colorWhite};
         background-color: ${colors.colorBlack};
-        border 2px solid ${colors.colorAccent};
+        border: 2px solid ${colors.colorAccent};
         transform: translateY(3px);
     }
 `;

@@ -8,7 +8,6 @@ const nullFunction = () => null;
 export const WordContext = createContext({
     currentWords: [],
     currentPage: 1,
-    wordType: "",
     decreasePage: nullFunction,
     increasePage: nullFunction,
     getWords: nullFunction,
@@ -18,7 +17,6 @@ export const WordContext = createContext({
 
 export const WordProvider = ({children}) => {
     const [currentWords, setCurrentWords] = useState("");
-    const [wordType, setWordType] = useState("");
     const {currentPage, decreasePage, increasePage, resetPageCount} = usePageCount();
 
 
@@ -43,7 +41,6 @@ export const WordProvider = ({children}) => {
     const values = {
         currentWords,
         currentPage,
-        wordType,
         decreasePage,
         increasePage,
         getWords,

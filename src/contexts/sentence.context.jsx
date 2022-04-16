@@ -1,5 +1,4 @@
 import {createContext, useState} from 'react';
-import usePageCount from '../hooks/usePageCount';
 
 
 const nullFunction = () => null;
@@ -8,7 +7,6 @@ const nullFunction = () => null;
 export const SentenceContext = createContext({
     sentences: [],
     currentSentence: "",
-    currentPage: 1,
     getSentences: nullFunction,
     saveSentence: nullFunction,
     handleChange: nullFunction,
@@ -20,7 +18,6 @@ export const SentenceContext = createContext({
 export const SentenceProvider = ({children}) => {
     const [sentences, setSentences] = useState([]);
     const [currentSentence, setCurrentSentence] = useState("");
-    const {currentPage, decreasePage, increasePage, resetPageCount} = usePageCount();
 
 
     const clearSentence = () => setCurrentSentence("");
@@ -44,6 +41,7 @@ export const SentenceProvider = ({children}) => {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({sentence: currentSentence}),
+                credentials: "include"
             }
             const response = await fetch(`http://localhost:8000/api/v1/sentences`, requestOptions);
             if(!response.ok){
@@ -61,7 +59,7 @@ export const SentenceProvider = ({children}) => {
 
     const getSentences = async (page) => {
         try{
-            const response = await fetch(`http://localhost:8000/api/v1/sentences?page=${page}&limit=10&sort=-createdAt`);
+            const response = await fetch(`http://localhost:8000/api/v1/sentences?page=${page}&limit=10&sort=-createdAt`, {credentials: "include"});
             if(!response.ok){
                 const error = response.json();
                 console.log(error.message);
@@ -84,11 +82,7 @@ export const SentenceProvider = ({children}) => {
         saveSentence,
         handleChange,
         addWord,
-        clearSentence,
-        currentPage,
-        decreasePage,
-        increasePage,
-        resetPageCount
+        clearSentence
     };
 
     return (<SentenceContext.Provider value={values}>{children}</SentenceContext.Provider>);
